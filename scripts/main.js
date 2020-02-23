@@ -1,11 +1,9 @@
 function renderPhoto(photo) {
     console.log('photo', photo)
-
     // Create HTMLImageElement
     const $photo = document.createElement('img');
-    $photo.src = photo;
-    // $photo.setAttribute('src', photo); Diffrent style
-
+    $photo.src = photo.url;
+    // $photo.setAttribute('src', photo); Different style
     //Render
     const $photos = document.querySelector('#photos');
     $photos.append($photo);
@@ -13,7 +11,12 @@ function renderPhoto(photo) {
 
 function renderPhotos(photos) {
     photos.forEach(function (photo) {
-        renderPhoto(photo);
+        try {renderPhoto(photo);
+        }
+        catch (err) {
+            console.warn(err);
+            renderPhoto({ url: 'https://placehold.co/200x300' })
+        }
     });
 }
 
@@ -51,10 +54,12 @@ function displayEmptyGalleryMessage() {
 
 function main() {
     // var let const    const be cant change referance to value
+    const a = 5;
     const photos = [
-        "https://i.picsum.photos/id/1036/200/300.jpg",
-        "https://i.picsum.photos/id/1035/200/300.jpg",
-        "https://i.picsum.photos/id/1033/200/300.jpg",
+       { url:  "https://i.picsum.photos/id/1036/200/300.jpg"},
+       { url: "https://i.picsum.photos/id/1035/200/300.jpg"},
+       { url: "https://i.picsum.photos/id/1033/200/300.jpg"},
+       null
     ];
     //renderPhotos(photos);
     const isGalleryEmpty = (photos.length === 0);
