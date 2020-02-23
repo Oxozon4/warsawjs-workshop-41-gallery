@@ -56,9 +56,27 @@ function displayCurrentTime() {
         $clock.textContent = currentDate;
     }, 1000)
 }
+function randomInteger(from, to) {
+    return Math.round(Math.random() * (to - from) + from);
+}
+
+function displayRandomPhoto(photos) {
+    // get referance
+    const $container = document.querySelector('#random-photo');
+    // Generate random number 
+    const random = randomInteger(0,2);
+    // Get photo
+     const randomPhoto = photos[random];
+    // Render
+    const $randomPhoto = document.createElement('img');
+    $randomPhoto.src = randomPhoto.url;
+    $container.append($randomPhoto);
+}
+
 function main() {
     loader.show();
-setTimeout(function () {
+
+    setTimeout(function () {
     const photos = [
        { url: "https://i.picsum.photos/id/1036/200/300.jpg"},
        { url: "https://i.picsum.photos/id/1035/200/300.jpg"},
@@ -68,15 +86,17 @@ setTimeout(function () {
     //renderPhotos(photos);
     const isGalleryEmpty = (photos.length === 0);
     loader.hide();
+    
     if (isGalleryEmpty) {
         displayEmptyGalleryMessage();
     }
     else {
         renderPhotos(photos);
     }
+    displayRandomPhoto(photos);
 }, 2000);
+
 displayCurrentTime();
     // var let const    const be cant change referance to value
 }
-
 main();
