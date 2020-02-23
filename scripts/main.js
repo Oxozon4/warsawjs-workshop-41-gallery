@@ -30,7 +30,7 @@ function displayMessage() {
 
     const $body = document.createElement('div');
     $body.classList.add('message-body');
-    $body.textContent = 'Gallery is empty';
+    $body.textContent = "Gallery is empty. We don't have any photos";
 
 
     $message.append($header);
