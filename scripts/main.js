@@ -53,8 +53,11 @@ function displayEmptyGalleryMessage() {
 }
 
 function main() {
-    // var let const    const be cant change referance to value
-    const a = 5;
+    loader.show();
+
+
+setTimeout(function () {
+    
     const photos = [
        { url:  "https://i.picsum.photos/id/1036/200/300.jpg"},
        { url: "https://i.picsum.photos/id/1035/200/300.jpg"},
@@ -64,11 +67,19 @@ function main() {
     //renderPhotos(photos);
     const isGalleryEmpty = (photos.length === 0);
 
+    loader.hide();
+
     if (isGalleryEmpty) {
         displayEmptyGalleryMessage();
     }
     else {
         renderPhotos(photos);
     }
+
+}, 2000);
+
+
+    // var let const    const be cant change referance to value
+
 }
 main();
