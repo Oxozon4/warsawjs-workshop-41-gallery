@@ -99,4 +99,38 @@ function main() {
 displayCurrentTime();
     // var let const    const be cant change referance to value
 }
+window.addEventListener('hashchange', function () {
+    
+    const $photos = document.querySelector('#photos');
+    const $randomPhoto = document.querySelector('#random-photo');
+
+    // switch (this.location.hash) {
+    //     case '':
+    //         $randomPhoto.style.display = 'none';
+    //     $photos.style.display = 'block';
+    //     break;
+
+    //     case '#random':
+    //         console.log('hash is not empty');
+    //     $randomPhoto.style.display = 'block';
+    //     $photos.style.display = 'none';
+    //     break;
+    //     default:
+    //         $randomPhoto.style.display = 'none';
+    //       $photos.style.display = 'none';
+    // }
+
+    if (location.hash.length === 0)
+    {
+        console.warn('hash is empty');
+        //hide randdom photo and show gallery container
+        $randomPhoto.style.display = 'none';
+        $photos.style.display = 'block';
+    }
+    else if (this.location.hash === '#random'){
+        console.log('hash is not empty');
+        $randomPhoto.style.display = 'block';
+        $photos.style.display = 'none';
+    }
+})
 main();
