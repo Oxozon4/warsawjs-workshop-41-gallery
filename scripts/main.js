@@ -132,5 +132,9 @@ window.addEventListener('hashchange', function () {
         $randomPhoto.style.display = 'block';
         $photos.style.display = 'none';
     }
+    else {
+        $randomPhoto.style.display = 'none';
+        $photos.style.display = 'none';
+    }
 })
 main();
